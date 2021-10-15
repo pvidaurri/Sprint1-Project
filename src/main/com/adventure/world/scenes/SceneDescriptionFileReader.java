@@ -16,7 +16,7 @@ public class SceneDescriptionFileReader {
      * so instead, you need keep calling readLine until it returns null. Make sure you save off
      * the contents of each readLine call, because you can't go backwards, only forwards.
      *
-     * For example, let's say the file contains the following:
+     * For example, let's say the file contains the  following:
      *
      *          Roses are red
      *          Violets are blue
