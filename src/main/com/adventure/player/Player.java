@@ -9,7 +9,7 @@ import main.com.adventure.world.objects.keys.Key;
 public class Player {
 
     public int level = 5;
-    //TODO Add name variable here
+    private String name = "";
     private int currentLocationIndex = AppSettings.getStartingLocation();
     private Key key;
     private Shovel shovel;
@@ -20,9 +20,12 @@ public class Player {
      * Sprint 2 Module 1
      * Saves the player's name. This file should store the name so it can be referenced later. After setting the name,
      * inform the user that the name has been changed by saying "Your name is now {name}".
+     *
      * @param newName - the player's name that will be saved
      */
     public void setName(String newName) {
+        name = newName;
+        System.out.println("Your name is now " + name);
 
     }
 
@@ -30,21 +33,29 @@ public class Player {
      * Sprint 2 Module 1
      * Retrieves the name of this player. The name of the player should be stored in this file, so we should reference
      * that value here.
+     *
      * @return The name of the player
      */
     public String getName() {
-        return null;
+        return name;
     }
 
     /**
      * Sprint 2 Module 1
-     *The canOpenDoor is calculated by taking the player's level and dividingitby2. If the result is greater than 2, the
+     * The canOpenDoor iscalculated by taking the player's level and dividingitby2. If the result is greater than 2, the
      * player can open doors.
+     *
      * @return true if the player's level is enough to open the door.
      */
     public boolean canOpenDoor() {
-        return false;
+
+        return ((double) level / 2) > 2;
     }
+
+
+
+
+
 
 
 
@@ -64,7 +75,22 @@ public class Player {
      * @return true if the move is executed. Otherwise, false.
      */
     public boolean move(String direction, boolean isValid) {
-        return true;
+
+        boolean valid = true;
+
+        if (direction.equals("EAST")) {
+
+            currentLocationIndex++;
+        } else if (direction.equals("WEST")) {
+
+            currentLocationIndex--;
+        } else {
+
+            System.out.println(direction + " is not a valid direction");
+            valid = false;
+        }
+
+        return valid;
     }
 
     /**
@@ -74,6 +100,7 @@ public class Player {
      */
     public void setWeapon(Weapon item) {
         //TODO Complete this function in Sprint 3 Module 2
+        power += item.getPower();
     }
 
     /**

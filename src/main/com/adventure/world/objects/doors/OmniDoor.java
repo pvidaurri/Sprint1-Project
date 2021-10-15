@@ -20,6 +20,8 @@ import java.util.Arrays;
 
 public class OmniDoor implements Tangible {
 
+
+
     /**
      * The number of pins this door has.
      */
