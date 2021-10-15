@@ -76,21 +76,22 @@ public class Player {
      */
     public boolean move(String direction, boolean isValid) {
 
-        boolean valid = true;
-
-        if (direction.equals("EAST")) {
+        if (isValid && direction.equals("EAST")) {
 
             currentLocationIndex++;
-        } else if (direction.equals("WEST")) {
+            return true;
+        } else if (isValid && direction.equals("WEST")) {
 
             currentLocationIndex--;
+            return true;
         } else {
 
             System.out.println(direction + " is not a valid direction");
-            valid = false;
+            return false;
+
         }
 
-        return valid;
+
     }
 
     /**
