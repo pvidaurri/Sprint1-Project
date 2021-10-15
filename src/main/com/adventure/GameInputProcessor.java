@@ -70,7 +70,16 @@ public class GameInputProcessor {
 //        }
 //            return new Command(object, verb);
            String[] newArray = input.split(" ");
-           return new Command(CommandVerb.getVerb(newArray[0]));
+           System.out.println(newArray[0]);
+           System.out.println(newArray[1]);
+           CommandVerb verb = CommandVerb.getVerb(newArray[0]);
+           String objectName = newArray[1];
+           return new Command(verb, objectName);
+//
+
+//        String[] newArray = input.split(" ");
+//        return new Command(CommandVerb.getVerb(newArray[0], newArray[1]));
+
 
     }
 

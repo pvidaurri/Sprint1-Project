@@ -30,7 +30,7 @@ public class Command {
      * @param objectName
      * @param verb - the verb of the command
      */
-    public Command(String objectName, CommandVerb verb) {
+    public Command(CommandVerb verb, String objectName) {
         this.verb = verb;
         this.objectName = objectName;
     }
