@@ -16,6 +16,8 @@ import main.com.adventure.world.scenes.SceneDescriptionNotFoundException;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
+import static main.com.adventure.settings.CommandVerb.*;
+
 public class GameController {
 
     private final Player player = new Player();
@@ -120,23 +122,34 @@ public class GameController {
         getNextCommand();
     }
 
+
     private void applyCommand(Command command) {
-        if (command.getVerb().equalsIgnoreCase(Command.LOOK)) {
+
+        switch (command.getVerb()) {
+            case LOOK:
             describeCurrentScene();
-        } else if (command.getVerb().equalsIgnoreCase(Command.MOVE)) {
+            break;
+            case MOVE:
             move(command.getObjectName());
-        } else if (command.getVerb().equalsIgnoreCase(Command.HELP)) {
+            break;
+            case HELP:
             printHelp();
-        } else if (command.getVerb().equalsIgnoreCase(Command.USE)) {
+            break;
+            case USE:
             use(command.getObjectName());
-        } else if (command.getVerb().equalsIgnoreCase(Command.DIG)) {
+            break;
+            case DIG:
             dig();
-        } else if (command.getVerb().equalsIgnoreCase(Command.EXAMINE)) {
+            break;
+            case EXAMINE:
             examine(command.getObjectName());
-        } else if (command.getVerb().equalsIgnoreCase(Command.TAKE)) {
+            break;
+            case TAKE:
             take(command.getObjectName());
-        } else {
+            break;
+            default:
             printInvalidCommand();
+            break;
         }
     }
 

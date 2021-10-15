@@ -16,6 +16,9 @@ public class CombatController {
     public CombatController(Player player, Monster monster) {
         this.player = player;
         this.monster = monster;
+
+
+
     }
 
     /**
@@ -24,11 +27,30 @@ public class CombatController {
      */
     public void autosimulateCombat() {
 
-    }
+        int monstersRemainingHealth = monster.getHealth() - player.getPower();
+        int playersRemainingHealth = player.getHealth() - monster.getPower();
 
-    public boolean isPlayerDefeated() {
-        return false;
+        while ((player.getHealth() > 0 && isPlayerDefeated()) && monster.getHealth() > 0) {
+
+            if (monster.getHealth() > 0) {
+                monster.setHealth(monstersRemainingHealth);
+                if (monster.getHealth() <= 0) {
+                    break;
+                }
+            } else if (player.getHealth() > 0) {
+                player.setHealth(playersRemainingHealth);
+                if (player.getHealth() <= 0) {
+                    break;
+                }
+            }
+//            return isPlayerDefeated();
+        }
+
     }
+        public boolean isPlayerDefeated () {
+            return false;
+        }
+
 
     /**
      * Resets the health of the monster and player back to 10.

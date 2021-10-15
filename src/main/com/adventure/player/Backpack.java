@@ -28,6 +28,13 @@ public class Backpack {
      */
     public Tangible getItem(String name) {
         //TODO Complete the function
+//        for (int i = 0; i < items.length; i++) {
+//            if (items[i] == items[i]) {
+//                if (items[i] == null)
+//                    return null;
+//            }
+//        }
+//        return items;
         return null;
     }
 
