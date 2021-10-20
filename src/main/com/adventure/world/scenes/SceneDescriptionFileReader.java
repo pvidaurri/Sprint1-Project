@@ -35,14 +35,17 @@ public class SceneDescriptionFileReader {
      */
 
     private String produceTextFromBufferedReader(BufferedReader br) throws IOException {
-        String line = null;
+        String line = "";
         String stanza = new String();
 
 
         while ((line = br.readLine()) != null) {
-            stanza += line;
+            //buffer.append(line);
+            stanza = (stanza + line) + "\n";
+
         }
-        throw new IOException();
+        System.out.println(stanza);
+        return stanza;
     }
 
     ////// DO NOT CHANGE ANYTHING BELOW THIS LINE /////

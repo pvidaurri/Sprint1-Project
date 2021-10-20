@@ -16,8 +16,6 @@ import main.com.adventure.world.scenes.SceneDescriptionNotFoundException;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-import static main.com.adventure.settings.CommandVerb.*;
-
 public class GameController {
 
     private final Player player = new Player();
@@ -127,29 +125,32 @@ public class GameController {
 
         switch (command.getVerb()) {
             case LOOK:
-            describeCurrentScene();
-            break;
+                describeCurrentScene();
+                break;
             case MOVE:
-            move(command.getObjectName());
-            break;
+                move(command.getObjectName());
+                break;
             case HELP:
-            printHelp();
-            break;
+                printHelp();
+                break;
             case USE:
-            use(command.getObjectName());
-            break;
+                use(command.getObjectName());
+                break;
             case DIG:
-            dig();
-            break;
+                dig();
+                break;
             case EXAMINE:
-            examine(command.getObjectName());
-            break;
+                examine(command.getObjectName());
+                break;
             case TAKE:
-            take(command.getObjectName());
-            break;
+                take(command.getObjectName());
+                break;
+            case INVENTORY:
+                player.printItems();
+                break;
             default:
-            printInvalidCommand();
-            break;
+                printInvalidCommand();
+                break;
         }
     }
 

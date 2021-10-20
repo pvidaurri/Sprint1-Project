@@ -27,13 +27,14 @@ public class OmniKey implements Tangible {
     @Override
     public void useItem(Tangible door) {
         //TODO Complete the function
-        if (canUse(door)) {
+        if (door.getClass() == OmniDoor.class) {
+            ((OmniDoor) door).configureKey(this);
         } else {
-//        if (!(door instanceof OmniDoor)) {
-//            return;
-//        }
+            System.out.println("This key cannot be used to configure the door");
         }
     }
+
+
 
     @Override
     public String getName() {
@@ -44,6 +45,8 @@ public class OmniKey implements Tangible {
     public String getDescription() {
         return "A key with adjustable pins for teeth";
     }
+
+    // tangible implementation
 
     @Override
     public Boolean canTake() {

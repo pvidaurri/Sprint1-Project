@@ -30,23 +30,15 @@ public class GameInputProcessor {
     private Command buildSimpleCommand(String input) {
 
         String[] newArray = input.split(" ");
-        return new Command(CommandVerb.getVerb(newArray[0]));
+        try {
+            return new Command(CommandVerb.getVerb(newArray[0]));
+        } catch (EmptyCommandException e) {
+            e.printStackTrace();
+        } catch (InvalidCommandException e) {
+            e.printStackTrace();
+        }
 
-//        Object o =input ;
-//        if (input.equals(o)) {
-//
-//            }
-//                return new Command(CommandVerb.getVerb(input));
-
-//        CommandVerb verb = null;
-//        int space = input.indexOf(" ");
-//
-//        if (space == -1) {
-//            verb = CommandVerb.getVerb(input);
-//        }
-//
-//        return new Command(verb);
-
+        return null;
     }
 
 
@@ -58,32 +50,21 @@ public class GameInputProcessor {
      */
     private Command buildCommandWithObject(String input) {
 
-//        String object;
-//        CommandVerb verb;
-//        int space = input.indexOf("");
-//
-//        object = input.substring(space + 1);
-//        if (space == -1) {
-//            verb = CommandVerb.getVerb(input);
-//        } else {
-//            verb = CommandVerb.getVerb(input.substring(0, space));
-//        }
-//            return new Command(object, verb);
-           String[] newArray = input.split(" ");
-           System.out.println(newArray[0]);
-           System.out.println(newArray[1]);
-           CommandVerb verb = CommandVerb.getVerb(newArray[0]);
-           String objectName = newArray[1];
-           return new Command(verb, objectName);
-//
-
-//        String[] newArray = input.split(" ");
-//        return new Command(CommandVerb.getVerb(newArray[0], newArray[1]));
-
+        String[] newArray = input.split(" ");
+        System.out.println(newArray[0]);
+        System.out.println(newArray[1]);
+        CommandVerb verb = null;
+        try {
+            verb = CommandVerb.getVerb(newArray[0]);
+        } catch (EmptyCommandException e) {
+            e.printStackTrace();
+        } catch (InvalidCommandException e) {
+            e.printStackTrace();
+        }
+        String objectName = newArray[1];
+        return new Command(verb, objectName);
 
     }
-
-
 
     /** DO NOT CHANGE ANYTHING BELOW THIS LINE. **/
 

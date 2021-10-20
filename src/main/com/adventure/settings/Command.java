@@ -27,7 +27,7 @@ public class Command {
 
     /**
      * Creates a command with no direct object (e.g. "help").
-     * @param objectName
+     * @param objectName - name of object
      * @param verb - the verb of the command
      */
     public Command(CommandVerb verb, String objectName) {
