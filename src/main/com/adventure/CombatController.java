@@ -30,32 +30,38 @@ public class CombatController {
         int monstersRemainingHealth = monster.getHealth() - player.getPower();
         int playersRemainingHealth = player.getHealth() - monster.getPower();
 
-        while ((player.getHealth() > 0 && isPlayerDefeated()) && monster.getHealth() > 0) {
+        while (player.getHealth() > 0 && monster.getHealth() > 0) {
 
-            if (monster.getHealth() > 0) {
-                monster.setHealth(monstersRemainingHealth);
-                if (monster.getHealth() <= 0) {
-                    break;
-                }
-            } else if (player.getHealth() > 0) {
-                player.setHealth(playersRemainingHealth);
-                if (player.getHealth() <= 0) {
-                    break;
-                }
-            }
-//            return isPlayerDefeated();
+            monster.setHealth(monstersRemainingHealth);
+            monstersRemainingHealth = monster.getHealth() - player.getPower();
+
+
+            player.setHealth(playersRemainingHealth);
+            playersRemainingHealth = player.getHealth() - monster.getPower();
+
         }
-
+        isPlayerDefeated();
+        return;
     }
-        public boolean isPlayerDefeated () {
-            return false;
-        }
 
+    /**
+     * Determines if player is alive.
+     * @return returns defeated true of false
+     */
+
+    public boolean isPlayerDefeated() {
+        if (player.getHealth() <= 0) {
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Resets the health of the monster and player back to 10.
      */
     public void reset() {
+        monster.setHealth(10);
+        player.setHealth(10);
 
     }
 }

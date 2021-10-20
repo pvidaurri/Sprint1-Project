@@ -1,20 +1,26 @@
 package main.com.adventure.player;
 
+
 import main.com.adventure.settings.AppSettings;
 import main.com.adventure.world.objects.Shovel;
 import main.com.adventure.world.objects.Tangible;
 import main.com.adventure.world.objects.Weapon;
 import main.com.adventure.world.objects.keys.Key;
 
+
+
 public class Player {
 
     public int level = 5;
     private String name = "";
     private int currentLocationIndex = AppSettings.getStartingLocation();
-    private Key key;
-    private Shovel shovel;
+    private Backpack backpack = new Backpack();
     private int power = 1;
     private int health = 10;
+
+
+
+
 
     /**
      * Sprint 2 Module 1
@@ -52,15 +58,6 @@ public class Player {
         return ((double) level / 2) > 2;
     }
 
-
-
-
-
-
-
-
-
-
     /**
      * Sprint 2 Module 2
      * The move function will take two parameters: a direction and a list of possible directions. It will be up to this
@@ -88,10 +85,7 @@ public class Player {
 
             System.out.println(direction + " is not a valid direction");
             return false;
-
         }
-
-
     }
 
     /**
@@ -111,9 +105,10 @@ public class Player {
      * @return the item or null if the item does not exist
      */
     public Tangible getItem(String itemName) {
-        //TODO Complete this function in Sprint 3 Module 3
-        return null;
+
+        return backpack.getItem(itemName);
     }
+
 
     /**
      * Sprint 3 Module 3
@@ -122,9 +117,10 @@ public class Player {
      * @return the removed item
      */
     public boolean removeItem(Tangible item) {
-        //TODO Complete this function in Sprint 3 Module 3
-        return false;
+
+        return backpack.removeItem(item);
     }
+
 
     /**
      * Sprint 3 Module 3
@@ -132,6 +128,7 @@ public class Player {
      */
     public void printItems() {
         //TODO Complete this function in Sprint 3 Module 3
+        backpack.printItems();
     }
 
     /**
@@ -141,22 +138,33 @@ public class Player {
      */
     public void addItem(Tangible item) {
         //TODO Complete this function
+        backpack.addItem(item);
     }
 
+    /**
+     * Method used to set key.
+     * @param item - key
+     */
     public void setKey(Key item) {
-        key = item;
+        backpack.addItem(item);
     }
 
     public Key getKey() {
-        return key;
+
+        return (Key) backpack.getItem("key");
+
     }
 
+    /**
+     * Method used to set shovel.
+     * @param item - shovel
+     */
     public void setShovel(Shovel item) {
-        shovel = item;
+        backpack.addItem(item);
     }
 
     public Shovel getShovel() {
-        return shovel;
+        return (Shovel) backpack.getItem("shovel");
     }
 
     //////// DON'T CHANGE THE CODE BELOW. ///////////
